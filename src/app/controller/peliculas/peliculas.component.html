@@ -1,0 +1,39 @@
+
+<div *ngIf = "display_title =='' ">
+<p>Peliculas <fa-icon [icon]="faFilm"></fa-icon></p>
+
+    <!-- <ul>
+        <li *ngFor="let peli of peliculas">
+            {{peli.display_title}}
+        </li>
+    </ul> -->
+<table class="image-table" >
+    <thead>
+        <tr>
+            <th>Pelicula</th>
+            <th><fa-icon [icon]="faImage"></fa-icon></th>
+            <th>Clasificacion</th>
+        
+            <th>Reseña</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+<!-- creo tabla con el objeto que tienen las peliculas -->
+        <tr *ngFor="let peli of peliculas" >
+            <th><h3><strong>{{peli.display_title}}</strong></h3></th>
+            <th> <img src="{{peli.multimedia.src}}" height="{{peli.multimedia.height}}" width="{{peli.multimedia.width}}"> </th>
+           <th><span *ngIf="peli.mpaa_rating != ''" >{{peli.mpaa_rating}} </span> <span *ngIf="peli.mpaa_rating == ''" >Sin clasificación </span></th>
+           <!-- <th><a (click)="enviarPelicula(peli)"  [routerLink]="['/detallesPelicula',peli.byline, peli.display_title]"><p> <fa-icon [icon]="faSearch"></fa-icon></p> ver Reseña</a></th> -->
+           <th><button (click)="mostrarDetallePelicula(peli)"><p> <fa-icon [icon]="faSearch"></fa-icon></p> ver Reseña</button></th>
+        </tr>
+
+    </tbody>
+</table>
+
+</div>
+<!-- doy la condicion si  en la variable display title hay algo usar el componente de peliculas detalle -->
+<div *ngIf = "display_title !='' ">
+<app-detalles-pelicula  [display_title]="display_title" [byline]="byline" (limpiar)="limpiarDetalle($event)" ></app-detalles-pelicula>
+</div>

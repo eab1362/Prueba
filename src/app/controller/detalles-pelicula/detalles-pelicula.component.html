@@ -1,0 +1,24 @@
+
+
+<h1 style="font-size:60px;">{{pelicula.display_title}}</h1>
+
+
+<p>{{pelicula.headline}}</p>
+<div>
+<img  src="{{pelicula.multimedia.src}}" height="{{pelicula.multimedia.height}}" width="{{pelicula.multimedia.width}}"> 
+</div>
+<div class="menu">
+<p>autor: {{pelicula.byline}}</p>
+<p>fecha de publicacion: {{pelicula.publication_date}}</p>
+
+<p>{{pelicula.summary_short}}. <a href="{{pelicula.link.url}}"> Cntinuar leyendo en NY Times.</a></p>
+
+
+
+
+
+</div>
+<div>
+    <hr>
+<button (click)="irAtras()" >Atras</button>
+</div>
